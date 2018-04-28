@@ -1,0 +1,29 @@
+#scramble {
+  letter-spacing: 5px;
+  font-size: 2em;
+  margin-top: 0;
+  padding-top: 0.4em;
+}
+
+header, main, footer, p, #scramble {
+  padding-left: 300px;
+}
+
+img {
+  width: 15em;
+}
+
+li.logo {
+  height: 240px;
+}
+
+#timer {
+  font-size: 7em;
+  padding: 1em 0 1em 0;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer, p, #scramble {
+    padding-left: 0;
+  }
+}
