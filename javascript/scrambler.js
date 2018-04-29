@@ -2,7 +2,6 @@ var Scrambler = function(options) {
   var faces           = options['faces'];
   var otherOptions    = ['`', '2', ''];
   var currentScramble = [];
-  var lastFace;
 
   this.scramble = function() {
     if (currentScramble.length > 0) {
@@ -22,9 +21,25 @@ var Scrambler = function(options) {
 
   function selectFace() {
     var face = sample(faces);
-    if (face === lastFace) { face = selectFace(); }
-    lastFace = face;
+    if (invalidTurn(face)) { face = selectFace(); }
     return face;
+  }
+
+  function invalidTurn(face) {
+    var lastTurn = currentScramble[currentScramble.length - 1];
+    var penultimateTurn = currentScramble[currentScramble.length - 2];
+
+    var lastFaceName = lastTurn === undefined ? null : lastTurn.face.name;
+    var penultimateFaceName = penultimateTurn === undefined ? null : penultimateTurn.face.name;
+    if (currentScramble.length > 4) {
+    }
+
+    if (face.name === lastFaceName) { return true }
+    if (face.name === penultimateFaceName && face.oppositeFace.name === lastFaceName) {
+      return true;
+    }
+
+    return false
   }
 
   function selectOtherOption() {
